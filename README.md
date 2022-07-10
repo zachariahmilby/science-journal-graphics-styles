@@ -19,9 +19,9 @@ Here are some installation instructions for the average Anaconda user, if
 you're more advanced I'm sure you can figure it out from here. (Note: in the
 instructions below I will assume that you are using a virtual environment named 
 `myenv`.) I've tested this using Python 3.10.
-2. Activate your virtual environment:<br>
+1. Activate your virtual environment:<br>
     `% conda activate myenv`
-3. Install the `funkyfresh` package and its dependencies:<br>
+2. Install the `funkyfresh` package and its dependencies:<br>
     `% python -m pip install git+https://github.com/zachariahmilby/science-journal-graphics-styles.git`
 
 You're now ready to use the `funkyfresh` package!
