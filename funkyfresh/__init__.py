@@ -1,1 +1,2 @@
-from funkyfresh.core import set_aas_style, set_agu_style
+from funkyfresh.core import set_aas_style, set_agu_style, \
+    set_personal_whitepaper_style

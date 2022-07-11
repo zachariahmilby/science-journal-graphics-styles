@@ -13,6 +13,8 @@ journals.
   - Astronomical Journal (AJ)
   - Astrophysical Journal (ApJ)
   - Planetary Science Journal (PSJ)
+- My personal styles:
+  - LaTeX article class with 10-point STIX2 fonts
 
 ## Installation
 Here are some installation instructions for the average Anaconda user, if 
@@ -28,8 +30,9 @@ You're now ready to use the `funkyfresh` package!
 
 ## Usage
 Usage is pretty simple. Start by importing the function for the desired style.
-There are currently two options: `set_aas_style` and `set_agu_style`. For 
-example, to set the style to match a JGR journal:
+There are currently three options: `set_aas_style`, `set_agu_style` and 
+`set_personal_whitepaper_style()`. For example, to set the style to match a JGR 
+journal:
 ```
 from funkyfresh import set_agu_style
 style = set_agu_style()
