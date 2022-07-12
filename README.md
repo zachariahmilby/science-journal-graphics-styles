@@ -28,6 +28,12 @@ instructions below I will assume that you are using a virtual environment named
 
 You're now ready to use the `funkyfresh` package!
 
+> **NOTE**<br>
+> If you're using Jupyter on a Mac, including <br>
+> `%config InlineBackend.figure_format = 'retina'` after you import `pyplot` 
+> will make any of your inline graphics displayed with `plt.show()` higher 
+> resolution.
+
 ## Usage
 Usage is pretty simple. Start by importing the function for the desired style.
 There are currently three options: `set_aas_style`, `set_agu_style` and 
