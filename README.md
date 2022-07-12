@@ -60,3 +60,51 @@ plt.plot(theta, np.sin(theta), color=style.blue)
 ```
 The AAS articles don't seem to have any particular house color, so it isn't an 
 option.
+
+## Example
+Here's a sine curve plotted with the default settings:
+```
+import astropy.units as u
+import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
+import numpy as np
+%config InlineBackend.figure_format = 'retina'
+
+theta = np.linspace(0, 360, 3601) * u.degree
+
+fig, axis = plt.subplots()
+axis.plot(theta, np.sin(theta))
+axis.xaxis.set_major_locator(ticker.MultipleLocator(60))
+axis.xaxis.set_minor_locator(ticker.MultipleLocator(15))
+axis.set_xlim(-14, 374)
+axis.set_ylim(-1.09, 1.09)
+axis.set_xlabel(r'$\theta$ [degrees]')
+axis.set_ylabel(r'$\sin(\theta)$')
+plt.show()
+```
+![](funkyfresh/anc/matplotlib_default.png)
+
+and here's how it looks with the AGU style applied:
+```
+import astropy.units as u
+import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
+import numpy as np
+from funkyfresh import set_agu_style
+%config InlineBackend.figure_format = 'retina'
+
+style = set_agu_style()
+
+theta = np.linspace(0, 360, 3601) * u.degree
+
+fig, axis = plt.subplots(figsize=(style.column_width, 2))
+axis.plot(theta, np.sin(theta), color=style.blue)
+axis.xaxis.set_major_locator(ticker.MultipleLocator(60))
+axis.xaxis.set_minor_locator(ticker.MultipleLocator(15))
+axis.set_xlim(-14, 374)
+axis.set_ylim(-1.09, 1.09)
+axis.set_xlabel(r'$\theta$ [degrees]')
+axis.set_ylabel(r'$\sin(\theta)$')
+plt.show()
+```
+![](funkyfresh/anc/funkyfresh.png)

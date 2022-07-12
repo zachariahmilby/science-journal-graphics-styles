@@ -77,6 +77,13 @@ def set_aas_style():
     Provides two different graphics width options: column (3.5 inches) and
     full-page (7.3 inches).
 
+    Properties
+    ----------
+    column_width : float
+        Width for a column-width figure in inches.
+    page_width : float
+        Width for a page-width figure in inches.
+
     Examples
     --------
     Get the column-width in inches:
@@ -99,6 +106,17 @@ def set_agu_style():
     full-text (5.4 inches) and full-page (7.3 inches). Also provides the blue
     color used in lines and section labels. Default figure size width is
     4.7917 pt.
+
+    Properties
+    ----------
+    column_width : float
+        Width for a column-width figure in inches.
+    text_width : float
+        Width for a text-block-width figure in inches
+    page_width : float
+        Width for a page-width figure in inches.
+    blue : str
+        Hexadecimal string for AGU blue color #004174.
 
     Examples
     --------
@@ -129,6 +147,13 @@ def set_personal_whitepaper_style():
     """
     Sets graphics style to match the default 10-point LaTeX article class I use
     for school papers, reports, etc. Also has a custom color dictionary.
+
+    Properties
+    ----------
+    page_width : float
+        LaTeX 10-pt article class default text width.
+    colors : dict
+        My custom color dictionary.
 
     Examples
     --------
