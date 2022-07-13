@@ -4,11 +4,20 @@ import matplotlib.pyplot as plt
 
 
 personal_color_dict = {
-    'red': '#D62728', 'orange': '#FF7F0E', 'yellow': '#FDB813',
-    'green': '#2CA02C', 'blue': '#0079C1', 'violet': '#9467BD',
-    'cyan': '#17BECF', 'magenta': '#D64ECF', 'brown': '#8C564B',
-    'darkgrey': '#3F3F3F', 'grey': '#7F7F7F', 'lightgrey': '#BFBFBF',
-    'black': '#000000', 'white': '#FFFFFF',
+    'red': '#D62728',
+    'orange': '#FF7F0E',
+    'yellow': '#FDB813',
+    'green': '#2CA02C',
+    'blue': '#0079C1',
+    'violet': '#9467BD',
+    'cyan': '#17BECF',
+    'magenta': '#D64ECF',
+    'brown': '#8C564B',
+    'darkgrey': '#3F3F3F',
+    'grey': '#7F7F7F',
+    'lightgrey': '#BFBFBF',
+    'black': '#000000',
+    'white': '#FFFFFF',
 }
 
 # Caltech color dictionaries from https://identity.caltech.edu/colors
@@ -238,7 +247,7 @@ def set_caltech_thesis_style():
     (https://identity.caltech.edu).
 
     Note: I have changed the font from Times New Roman to STIX2. It's just
-    better. You can do this, too, by adding \usepackage{stix2} to your LaTeX
+    better. You can do this, too, by importing the stix2 package in your LaTeX
     preamble.
 
     Properties
@@ -246,7 +255,7 @@ def set_caltech_thesis_style():
     caltech_orange : str
         Pantone MS 1585c Orange.
     caltech_neutral_colors : dict
-        Caltech’s neutral color palette complements the Caltech orange and
+        Caltech's neutral color palette complements the Caltech orange and
         should be used for projects with a more traditional, serious tone.
     caltech_deep_colors : dict
         Caltech's deep color palette adds contrast to the Caltech orange as
@@ -289,3 +298,8 @@ def set_caltech_thesis_style():
     """
 
     return CaltechThesis()
+
+
+if __name__ == "__main__":
+    style = set_caltech_thesis_style()
+    print(style.caltech_orange)
