@@ -2,7 +2,8 @@
 
 This package provides functions which automatically set Matplotlib style 
 parameters (fonts, line weights, etc.) to match those of select scientific 
-journals.
+journals. If you use this, your plots will look funky and fresh (at least 
+compared to the Matplotlib defaults).
 
 ## Currently-Supported Styles
 - American Geophysical Union (AGU)
@@ -38,73 +39,64 @@ You're now ready to use the `funkyfresh` package!
 
 ## Usage
 Usage is pretty simple. Start by importing the function for the desired style.
-There are currently three options: `set_aas_style`, `set_agu_style` and 
-`set_personal_whitepaper_style()`. For example, to set the style to match a JGR 
-journal:
+These are the current styles available:
+1. `set_aas_style`
+2. `set_agu_style`
+3. `set_personal_whitepaper_style()`
+4. `set_caltech_thesis_style()`
+
+For example, to set the style to match a JGR journal:
 ```
 from funkyfresh import set_agu_style
 style = set_agu_style()
 ```
 The function returns an object which has a few parameters you might want to 
-use when making figures. The AGU style includes three figure widths (column, 
-text and page) and the predominant blue color used for section title font 
-colors. The AAS style includes two figure widths (column and page).
-
-To create a column-width figure with a height of 2 inches, you might do this:
-```
-fig = plt.figure(figsize=(style.column_width, 2))
-```
-If you wanted to plot sine using the JGR blue color (#004174), you could do 
-this:
-```
-theta = np.linspace(0, 2 * np.pi, 1000)
-plt.plot(theta, np.sin(theta), color=style.blue)
-```
-The AAS articles don't seem to have any particular house color, so it isn't an 
-option.
+use when making figures. The documentation for each style lists the available
+properties you can access.
 
 ## Example
-Here's a sine curve plotted with the default settings:
+Let's say for some reason I want a plot of one period of a sine wave for a 
+paper I'm going to publish in the AGU journal Geophysical Research Letters. 
+Here's a sine curve plotted with the default settings. It looks alright, but 
+the fonts don't match the journal style at all, so this plot will look 
+inconsistent with the rest of the document.
 ```
 import astropy.units as u
 import matplotlib.pyplot as plt
-import matplotlib.ticker as ticker
 import numpy as np
-%config InlineBackend.figure_format = 'retina'
 
 theta = np.linspace(0, 360, 3601) * u.degree
 
-fig, axis = plt.subplots()
+fig, axis = plt.subplots(constrained_layout=True)
 axis.plot(theta, np.sin(theta))
-axis.xaxis.set_major_locator(ticker.MultipleLocator(60))
-axis.xaxis.set_minor_locator(ticker.MultipleLocator(15))
-axis.set_xlim(-14, 374)
-axis.set_ylim(-1.09, 1.09)
 axis.set_xlabel(r'$\theta$ [degrees]')
 axis.set_ylabel(r'$\sin(\theta)$')
 plt.show()
 ```
 ![](funkyfresh/anc/matplotlib_default.png)
 
-and here's how it looks with the AGU style applied:
+By calling `set_agu_style()` and changing the figure width to 
+`column_width` and the color of the line to the blue color included in the 
+style, the same plot looks much better with minimal changes to the code. The
+fonts now match the journal figure captions both in typeface and size, the
+lineweights also match, and the figure size should (hopefully) encourage 
+whoever is typesetting your paper to place this image in a column-width figure.
+I'd probably still make a few changes (like placing major ticks along the 
+horizontal axis to multiples of 60, and minor ticks to multiples of 15), but 
+those types of changes aren't a matter of visual style but rather best 
+practices for data display.
 ```
 import astropy.units as u
 import matplotlib.pyplot as plt
-import matplotlib.ticker as ticker
 import numpy as np
 from funkyfresh import set_agu_style
-%config InlineBackend.figure_format = 'retina'
 
 style = set_agu_style()
 
 theta = np.linspace(0, 360, 3601) * u.degree
 
-fig, axis = plt.subplots(figsize=(style.column_width, 2))
+fig, axis = plt.subplots(figsize=(style.column_width, 2), constrained_layout=True)
 axis.plot(theta, np.sin(theta), color=style.blue)
-axis.xaxis.set_major_locator(ticker.MultipleLocator(60))
-axis.xaxis.set_minor_locator(ticker.MultipleLocator(15))
-axis.set_xlim(-14, 374)
-axis.set_ylim(-1.09, 1.09)
 axis.set_xlabel(r'$\theta$ [degrees]')
 axis.set_ylabel(r'$\sin(\theta)$')
 plt.show()
