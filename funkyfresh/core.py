@@ -3,11 +3,40 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 
 
-color_dict = {'red': '#D62728', 'orange': '#FF7F0E', 'yellow': '#FDB813',
-              'green': '#2CA02C', 'blue': '#0079C1', 'violet': '#9467BD',
-              'cyan': '#17BECF', 'magenta': '#D64ECF', 'brown': '#8C564B',
-              'darkgrey': '#3F3F3F', 'grey': '#7F7F7F', 'lightgrey': '#BFBFBF',
-              'black': '#000000', 'white': '#FFFFFF'}
+personal_color_dict = {
+    'red': '#D62728', 'orange': '#FF7F0E', 'yellow': '#FDB813',
+    'green': '#2CA02C', 'blue': '#0079C1', 'violet': '#9467BD',
+    'cyan': '#17BECF', 'magenta': '#D64ECF', 'brown': '#8C564B',
+    'darkgrey': '#3F3F3F', 'grey': '#7F7F7F', 'lightgrey': '#BFBFBF',
+    'black': '#000000', 'white': '#FFFFFF',
+}
+
+# Caltech color dictionaries from https://identity.caltech.edu/colors
+caltech_orange = '#FF6C0C'  # Pantone PMS 1585c Orange
+caltech_neutral_colors = {
+    'PMS Cool Gray 9': '#76777B',
+    'PMS Cool Grey 3c': '#C8C8C8',
+    'PMS 414': '#AAA99F',
+    'PMS 5497c': '#849895',
+    'PMS 7494c': '#9DAE88',
+    'PMS 451c': '#C7B784',
+    'PMS 7403c': '#F1D384',
+}
+caltech_deep_colors = {
+    'PMS 548c': '#003B4C',
+    'PMS 3292c': '#005851',
+    'PMS 668c': '#644B78',
+    'PMS 195c': '#7A303F',
+    'PMS 186c': '#CF0A2C',
+}
+caltech_bright_colors = {
+    'PMS 299c': '#00A1DF',
+    'PMS 7473c': '#1E988A',
+    'PMS 7489c': '#73A950',
+    'PMS 7408c': '#F9BE00',
+    'PMS 605c': '#E2CC00',
+    'PMS 1915c': '#F54D80',
+}
 
 
 def _set_style(name: str):
@@ -68,7 +97,33 @@ class PersonalWhitepaper:
 
     @property
     def colors(self) -> dict:
-        return color_dict
+        return personal_color_dict
+
+
+class CaltechThesis:
+
+    def __init__(self):
+        _set_style('caltech_thesis')
+
+    @property
+    def caltech_orange(self) -> str:
+        return caltech_orange
+
+    @property
+    def caltech_neutral_colors(self) -> dict:
+        return caltech_neutral_colors
+
+    @property
+    def caltech_deep_colors(self) -> dict:
+        return caltech_deep_colors
+
+    @property
+    def caltech_bright_colors(self) -> dict:
+        return caltech_bright_colors
+
+    @property
+    def text_width(self) -> float:
+        return 5.5206
 
 
 def set_aas_style():
@@ -112,7 +167,7 @@ def set_agu_style():
     column_width : float
         Width for a column-width figure in inches.
     text_width : float
-        Width for a text-block-width figure in inches
+        Width for a text-block-width figure in inches.
     page_width : float
         Width for a page-width figure in inches.
     blue : str
@@ -174,3 +229,63 @@ def set_personal_whitepaper_style():
     """
 
     return PersonalWhitepaper()
+
+
+def set_caltech_thesis_style():
+    """
+    Sets graphics style to match the Caltech LaTeX thesis class along with
+    color dictionaries taken from the Caltech Identity Toolkit
+    (https://identity.caltech.edu).
+
+    Note: I have changed the font from Times New Roman to STIX2. It's just
+    better. You can do this, too, by adding \usepackage{stix2} to your LaTeX
+    preamble.
+
+    Properties
+    ----------
+    caltech_orange : str
+        Pantone MS 1585c Orange.
+    caltech_neutral_colors : dict
+        Caltech’s neutral color palette complements the Caltech orange and
+        should be used for projects with a more traditional, serious tone.
+    caltech_deep_colors : dict
+        Caltech's deep color palette adds contrast to the Caltech orange as
+        well as the neutral palette, and may be used to provide more depth and
+        texture to communications materials.
+    caltech_bright_colors : dict
+        Caltech's bright color palette provides an opportunity to adjust the
+        temper of a piece from subtle to bold. These colors should be used as
+        accents to the primary, neutral, and deep colors, and carefully
+        selected based on what is appropriate to the tone of the piece.
+    text_width : float
+        Width for a text-block-width figure in inches.
+
+    Examples
+    --------
+    Get the ubiquitous Caltech orange color:
+    >>> style = set_caltech_thesis_style()
+    >>> style.caltech_orange
+    '#FF6C0C'
+
+    Get the dark grey color from the Caltech netural colors dictionary:
+    >>> style = set_caltech_thesis_style()
+    >>> style.caltech_neutral_colors['PMS Cool Gray 9']
+    '#76777B'
+
+    Get the available colors from the Caltech neutral colors dictionary:
+    >>> style = set_caltech_thesis_style()
+    >>> style.caltech_neutral_colors.keys()
+    dict_keys(['PMS Cool Gray 9', 'PMS Cool Grey 3c', 'PMS 414', 'PMS 5497c', 'PMS 7494c', 'PMS 451c', 'PMS 7403c'])
+
+    Get the available colors from the Caltech deep colors dictionary:
+    >>> style = set_caltech_thesis_style()
+    >>> style.caltech_deep_colors.keys()
+    dict_keys(['PMS 548c', 'PMS 3292c', 'PMS 668c', 'PMS 195c', 'PMS 186c'])
+
+    Get the available colors from the Caltech bright colors dictionary:
+    >>> style = set_caltech_thesis_style()
+    >>> style.caltech_bright_colors.keys()
+    dict_keys(['PMS 299c', 'PMS 7473c', 'PMS 7489c', 'PMS 7408c', 'PMS 605c', 'PMS 1915c'])
+    """
+
+    return CaltechThesis()
