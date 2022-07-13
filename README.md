@@ -15,6 +15,8 @@ journals.
   - Planetary Science Journal (PSJ)
 - My personal styles:
   - LaTeX article class with 10-point STIX2 fonts
+  - Caltech Thesis format with 12-point STIX2 fonts and color dictionaries from
+    the Caltech Identity Toolkit (https://identity.caltech.edu).
 
 ## Installation
 Here are some installation instructions for the average Anaconda user, if 
