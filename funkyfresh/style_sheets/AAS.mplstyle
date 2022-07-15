@@ -1,5 +1,5 @@
 text.usetex: True
-text.latex.preamble: \usepackage{stix,siunitx,amsmath,amssymb,isomath}\usepackage[version=4]{mhchem}
+text.latex.preamble: \usepackage{stix,siunitx,amsmath,amssymb,isomath,physics}\usepackage[version=4]{mhchem}
 font.family: serif
 font.size: 8
 axes.titlesize: 8
